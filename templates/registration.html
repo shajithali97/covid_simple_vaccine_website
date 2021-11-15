@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/login_registration.css' %}">
+{% endblock custom_css%}
+{% block content %}
+<header id="header" class="header">
+    <div class="container">
+
+        <div class="signup-form">
+            <form action="{% url 'auth:registration' %}" method="post">
+                {% csrf_token %}
+                <div class="text-center">
+                    <img class="logo" src="{% static 'images/logo.png' %}" alt="name">
+                </div>
+                <h2 class="text-center">Sign Up</h2>
+                <p class="text-center">Please fill in this form to create an account!</p>
+                <hr>
+                {% for msg in messages %}
+                <label class="text-center" style="color:red;
+                text-align:center;">
+                    {{msg}}
+                </label>
+                <hr>
+                {% endfor %}
+                <div class="clearfix">
+
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="first_name" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="last_name" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" name="email" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" name="confirm_password" required="required">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                    </div>
+            </form>
+            <div class="text-center">Already have an account? <a href="{% url 'covid_app:login' %}">Login here</a></div>
+        </div>
+    </div>
+</header>
+{% endblock content %}

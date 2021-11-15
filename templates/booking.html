@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block custom_css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="{% static 'css/login_registration.css' %}">
+
+{% endblock custom_css%}
+{% block content %}
+<header id="header" class="header">
+    <div class="container">
+        <div class="signup-form">
+            <form action="{% url 'covid_app:booking_slot' %}" method="post"
+                data-cities-url="{% url 'covid_app:ajax_load_cities' %}" id="f1">
+                {% csrf_token %}
+                <div class="text-center">
+                    <img class="logo" src="{% static 'images/logo.png' %}" alt="name">
+                </div>
+                <h4 class="text-center title">Vaccination Slot Booking</h2>
+                    <p class="text-center">Please fill in this form</p>
+                    <hr>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input class="form-control" name="phone_number" type="text"
+                            placeholder="Enter phone number with country code" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input class="form-control" name="dob" type="date" required>
+                    </div>
+                    <div class="form-group ">
+                        <label>Gender</label>
+                        <div class="row mx-3">
+                            <div class="form-check col-lg-3" id="gender">
+                                <input class="form-check-input" type="radio" value="male" name="gender" id="male"
+                                    checked>
+                                <label class="form-check-label" for="male">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check col-lg-3">
+                                <input class="form-check-input" type="radio" value="female" name="gender" id="female">
+                                <label class="form-check-label" for="female">
+                                    Female
+                                </label>
+                            </div>
+                            <div class="form-check col-lg-3">
+                                <input class="form-check-input" type="radio" value="transgender" name="gender"
+                                    id="transgender">
+                                <label class="form-check-label" for="transgender">
+                                    Transgender
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>Have you been diagnosed with Covid-19?</label>
+                        <div class="row mx-3">
+                            <div class="form-check col-lg-3">
+                                <input class="form-check-input" type="radio" value="yes" name="covid" id="yes" checked>
+                                <label class="form-check-label" for="yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check col-lg-3">
+                                <input class="form-check-input" type="radio" value="no" name="covid" id="no">
+                                <label class="form-check-label" for="no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>Please check all symptoms that apply:</label>
+                        <div class="row mx-2">
+                            <div class="form-check col-lg-5">
+                                <input class="form-check-input" name="symptoms" type="checkbox" id="inlineCheckbox1"
+                                    value="Loss of taste/smell, ">
+                                <label class="form-check-label" for="inlineCheckbox1">Loss of taste/smell</label>
+                            </div>
+                            <div class="form-check col-lg-5 ">
+                                <input class="form-check-input" name="symptoms" type="checkbox" id="inlineCheckbox2"
+                                    value="Body aches, ">
+                                <label class="form-check-label" for="inlineCheckbox2">Body aches</label>
+                            </div>
+                            <div class="form-check col-lg-5 ">
+                                <input class="form-check-input" name="symptoms" type="checkbox" id="inlineCheckbox3"
+                                    value="Difficulty breathing, ">
+                                <label class="form-check-label" for="inlineCheckbox3">Difficulty breathing</label>
+                            </div>
+                            <div class="form-check col-lg-5">
+                                <input class="form-check-input" name="symptoms" type="checkbox" id="inlineCheckbox4"
+                                    value=" Cough Runny nose, ">
+                                <label class="form-check-label" for="inlineCheckbox4">Cough Runny nose</label>
+                            </div>
+                            <div class="form-check col-lg-5">
+                                <input class="form-check-input" name="symptoms" type="checkbox" id="inlineCheckbox5"
+                                    value=" Sore throat, ">
+                                <label class="form-check-label" for="inlineCheckbox5">Sore throat</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label>Address</label>
+                        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="address"
+                            rows="3"></textarea>
+                    </div>
+                    <div class="form-group" id="district-drop-down">
+                        <label for="district">District:</label>
+
+                        <select class="form-control" name="district" id="district">
+
+                            <option disabled="disabled">Select a district</option>
+                            {% for district in districts %}
+                            <option value="{{district}}">{{district}}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="district">Place:</label>
+
+                        <select class="form-control" name="place" id="place-drop-down">
+
+                            <option class="item" disabled="disabled" id="place">Select a Place</option>
+
+
+                        </select>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Booking</button>
+                    </div>
+            </form>
+        </div>
+
+    </div>
+</header>
+{% endblock content %}
+{% block custom_js%}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    const modelsDataBox = document.getElementById('place-drop-down')
+    const modelInput = document.getElementById('place')
+    $("#district").change(function () {
+        const url = $("#f1").attr("data-cities-url");  // get the url of the `load_cities` view
+        const selectedDistrict = $(this).val();
+        console.log(url)  // get the selected country ID from the HTML input
+        console.log(selectedDistrict)  // get the selected country ID from the HTML input
+        modelsDataBox.innerHTML = ""
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'selectedDistrict': selectedDistrict       // add the country id to the GET parameters
+            },
+            success: function (response) {   // `data` is the return of the `load_cities` view function
+
+                console.log(response.data)
+                const modelsData = response.data
+                modelsData.map(item => {
+                    const option = document.createElement('option')
+
+                    option.innerHTML = item.place_name
+                    console.log(option.innerHTML)
+                    option.setAttribute('class', 'item')
+                    option.setAttribute('data-value', item.place_name)
+
+                    modelsDataBox.appendChild(option)
+
+                })
+
+                modelInput.addEventListener('change', e => {
+                    btnBox.classList.remove('not-visible')
+                })
+
+            }, error: function (error) {
+                console.log(error)
+            }
+        });
+
+    });
+</script>
+
+{% endblock custom_js %}

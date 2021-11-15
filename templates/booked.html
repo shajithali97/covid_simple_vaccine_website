@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<header id="header" class="header">
+
+    <div class="px-4 py-1 my-2 text-center">
+        <h1 class="display-5 fw-bold text-success">Slot Booking Successfully</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+            <div class="lead text-dark">Hi,<span class=" fw-bold text-primary">{{user.username}}</span>
+            </div>
+            <div>
+
+                Your vaccination slot booked.
+                One or two days vaccination centre details & time send to your registered
+                phone_number({{v_id.phone_number}})
+            </div>
+            <div>Slot Id is :<span class="text-center text-danger">
+                    {{v_id.vaccination_token_id}}
+                </span> </div>
+            </p>
+        </div>
+    </div>
+</header>
+{% endblock %}

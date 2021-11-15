@@ -1,0 +1,54 @@
+{% load static %}
+<!-- Navigation -->
+<nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+    <div class="container">
+
+        <!-- Image Logo -->
+        <a class="navbar-brand logo-image" href="index.html"><img src="{% static 'images/logo.png' %}" alt="alternative"
+                width="30" height="24">
+            Covid -19 <span class="logo_span">Vaccination</span></a>
+
+
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ms-auto navbar-nav-scroll">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                        aria-expanded="false">Place</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+
+                        {% for d in links %}
+                        <li><a class="dropdown-item" target="blank" href="https://en.wikipedia.org/wiki/{{d}}">{{d}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            <span class="nav-item">
+                <a class="btn-solid-sm" href="{% url 'covid_app:booking_slot' %}">Vaccination Slot Booking</a>
+            </span>
+            <span class="nav-item">
+                {% if user.is_authenticated %}
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown"
+                        aria-expanded="false">{{user.username}}</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown02">
+
+
+                        <li><a class="dropdown-item" href="{% url 'auth:logout' %}">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+                {% endif %}
+
+            </span>
+        </div> <!-- end of navbar-collapse -->
+    </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+<!-- end of navigation -->

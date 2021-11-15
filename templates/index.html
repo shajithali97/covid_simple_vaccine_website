@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Header -->
+<header id="header" class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-xl-5 ">
+                <div class="text-container ">
+                    <div class="section-title ">💉 Don't be upset.Let's get vaccinated</div>
+                    <h1 class="h1-large">With Vaccination We Can End This Pandemic</h1>
+                    <p class="p-large">with vaccination, we can reduce the number of cases of
+                        Covid-19 transmission, and can create herd immunity.</p>
+                    <a class="btn-solid-lg" href="{% url 'covid_app:booking_slot' %}">Vaccination Slot Booking</a>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+            <div class="col-lg-6 col-xl-7">
+                <div class="">
+                    <img class="img-fluid" src="{% static 'images/banner.png' %}" alt="alternative">
+                </div> <!-- end of image-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</header> <!-- end of header -->
+<!-- end of header -->
+
+<!-- Projects -->
+<div id="projects" class="filter bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="h2-heading">Steps to <span class="heading-span">Get Vaccinated</span>
+                </h2>
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+        <div class="row">
+            <div class="col-lg-3">
+
+                <div class="card_rect h-100">
+                    <img src="{% static 'images/bottle.png' %}" class="mt-3" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Learn the vaccine</h5>
+                        <p class="card-text"> There is many kind of vaccine and
+                            its side-effects</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+
+                <div class="card_rect  h-100">
+                    <img src="{% static 'images/loc.png' %}" class="mt-3" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Find the nearest service</h5>
+                        <p class="card-text"> Find location and see the date for the vaccination service
+                            .</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+
+                <div class="card_rect  h-100">
+                    <img src="{% static 'images/vector.png' %}" class="mt-3" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Register yourself</h5>
+                        <p class="card-text">Register yourself and complete the requirements needed
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3">
+
+                <div class="card_rect  h-100">
+                    <img src="{% static 'images/inj.png' %}" class="mt-3" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> Get vaccinated</h5>
+                        <p class="card-text">Come to the location of the vaccination service and get the vaccine!
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div> <!-- end of container -->
+</div> <!-- end of filter -->
+<!-- end of projects -->
+
+<!-- Details 1 -->
+<div id="details" class="basic-1">
+    <div class="container">
+        <div class="row ">
+
+            <div class="col-lg-6 col-xl-5">
+                <div class="text-container">
+                    <h2>Leading <span class="heading-span fw-bold">vaccination providers</span></h2>
+                    <p>No need to worry anymore about not getting vaccinated, because Vaccinate is here to provide
+                        anything you need about vaccination.</p>
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+            <div class="col-lg-6 col-xl-7">
+                <div class="image-container">
+                    <img class="img-fluid" src="{% static 'images/banner_2.png' %}" alt="alternative">
+                </div> <!-- end of image-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-1 -->
+<!-- end of details 1 -->
+
+<!-- Details 1 -->
+<div id="details" class="basic-1">
+    <div class="container">
+        <div class="row flex-lg-row-reverse">
+
+            <div class="col-lg-6 col-xl-5">
+                <div class="text-container">
+                    <h2>Learn more
+                        about the
+
+                        <span class="heading-span fw-bold">vaccine</span>
+                    </h2>
+                    <p>Scare or still confuse about vaccination? Don’t
+                        worry, Vaccinated is here to tell you informations
+                        about vaccination and many kind of vaccine to
+                        you all-in-one place.</p>
+
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+            <div class="col-lg-6 col-xl-7">
+                <div class="image-container">
+                    <img class="img-fluid" src="{% static 'images/banner_3.png' %}" alt="alternative">
+                </div> <!-- end of image-container -->
+            </div> <!-- end of col -->
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div> <!-- end of basic-1 -->
+<!-- end of details 1 -->
+<div id="projects" class="filter bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="h2-heading">Vaccinate <span class="heading-span">Yourself</span> Now
+                </h2>
+            </div> <!-- end of col -->
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Find the nearest vaccination service from your location now and get vaccinate to
+                    protect yourself and the others.</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="{% url 'covid_app:booking_slot' %}" type="button"
+                        class="btn-solid-lg btn-lg px-4 gap-3">Vaccination Slot Booking</a>
+                </div>
+            </div>
+        </div> <!-- end of row -->
+    </div>
+</div>
+
+{% endblock content %}
