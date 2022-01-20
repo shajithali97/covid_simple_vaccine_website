@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/detail_page.css' %}">
+</head>
+
+<body>
+
+    <div class="container jumbotron emp-profile mt-5">
+
+        <div class="text-center">
+            <div class="circle mx-auto">
+                {{selected_user.user.first_name|first}}{{selected_user.user.last_name|first}} </div>
+        </div>
+        <div class="row pt-4">
+
+            <div class="col-md-6 ">
+                <div class="profile-head">
+                    <h5>
+                        {{selected_user.user}},
+                    </h5>
+                    <h6>
+                        {{selected_user.address}},
+                    </h6>
+
+                    <h6>
+                        {{selected_user.place}},
+                    </h6>
+                    <h6>
+                        {{selected_user.district}}.
+                    </h6>
+                    <h4 class=pt-4>Other Details</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <h6>
+                    Vaccination slot id: {{selected_user.vaccination_token_id}}
+                </h6>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>User Id</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{selected_user.user.id}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{selected_user.user.email}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{selected_user.phone_number}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Date of Birth</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{selected_user.date_of_birth}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Gender</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{selected_user.gender.capitalize}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Covid Affected</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{selected_user.covid_affected.capitalize}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+
+</html>
